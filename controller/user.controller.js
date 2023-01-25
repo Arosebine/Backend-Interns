@@ -34,7 +34,7 @@ exports.createUser = async (req, res) => {
              phone_number, 
              });
             
-         res.status(201).send(user)
+         res.status(201).send("You have successfully registered", user)
             
     } catch (error) {
         res.status(500).send({message: error.message })
