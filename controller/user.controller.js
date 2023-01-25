@@ -121,15 +121,13 @@ exports.viewSingleUser = async(req, res)=>{
 
 exports.updateUser = async(req, res)=>{
     try {
-        const email = req.params.email;
+        const { email, first_name, last_name, address, phone_number, } = req.body;
 
         const user = await User.findOneAndUpdate(
             { email: email },
             {
                 first_name,
                 last_name, 
-                email, 
-                password: hashedPassword, 
                 address, 
                 phone_number,                 
             },
