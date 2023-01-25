@@ -34,7 +34,9 @@ exports.createUser = async (req, res) => {
              phone_number, 
              });
             
-         res.status(201).send("You have successfully registered", user)
+         res.status(201).send({ 
+            status: "You have successfully registered", data: user
+        })
             
     } catch (error) {
         res.status(500).send({message: error.message })
@@ -134,7 +136,7 @@ exports.updateUser = async(req, res)=>{
             {
                 new: true,
             })
-            res.status(200).send(user)
+            res.status(200).send({status: "successfully updated", data: user })
     } catch (error) {
         res.status(500).send({
             error: error.message,
