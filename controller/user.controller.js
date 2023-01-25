@@ -152,7 +152,7 @@ exports.deleteUsers = async(req, res)=>{
         const deleteAll = await User.find({})
         res.status(200).send({ 
             status: 'You have successfully deleted all users', 
-            Data: deleteUser });
+            data: deleteAll, });
     } catch (error) {
         res.status(500).send({
             error: error.message,
