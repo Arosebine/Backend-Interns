@@ -136,7 +136,7 @@ exports.updateUser = async(req, res)=>{
             {
                 new: true,
             })
-            res.status(200).send({status: "successfully updated", data: user })
+            res.status(200).send({ status: "successfully updated" })
     } catch (error) {
         res.status(500).send({
             error: error.message,
@@ -150,7 +150,9 @@ exports.updateUser = async(req, res)=>{
 exports.deleteUsers = async(req, res)=>{
     try {
         const deleteAll = await User.find({})
-        res.status(200).send( "All deleted successfully", deleteAll)
+        res.status(200).send({ 
+            status: 'You have successfully deleted all users', 
+            Data: deleteUser });
     } catch (error) {
         res.status(500).send({
             error: error.message,
@@ -165,7 +167,9 @@ exports.deleteUserByEmail = async(req, res)=>{
     try {
         const email = req.params.email;
         const deleteUser = await User.findOneAndDelete({ email })
-        res.status(200).send('User deleted successfully', deleteUser);
+        res.status(200).send({ 
+            status: 'User deleted successfully', 
+            Data: deleteUser });
     } catch (error) {
         res.status(500).send({
             error: error.message,
